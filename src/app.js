@@ -49,9 +49,8 @@ showDate(today);
 showTime(today);
 
 function showDefaultCityWeather(defaultCityName) {
-  let defaultUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCityName}&appid=bb0df6985c2eab6a171d64a6bacbb4e1&units=metric`;
+  let defaultUrl = `https://api.shecodes.io/weather/v1/current?query=${defaultCityName}&key=4o57feb2953ca1cb4a50930ctd015ccd&units=metric`;
   console.log(defaultUrl);
-
   axios.get(defaultUrl).then(showWeatherData);
 }
 
@@ -59,21 +58,22 @@ showDefaultCityWeather("Catania");
 
 function changeCity(event) {
   event.preventDefault();
-  let key = "bb0df6985c2eab6a171d64a6bacbb4e1";
+  let key = "4o57feb2953ca1cb4a50930ctd015ccd";
   let city = document.querySelector("#typed-city");
   let cityName = city.value;
   let unit = "metric";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=${unit}`;
+  let url = `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${key}&units=metric`;
+  console.log(url);
   city.value = "";
 
   axios.get(url).then(showWeatherData);
 }
 
 function showWeatherData(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   let newTemperature = document.querySelector("#current-temp");
   newTemperature.innerHTML = temperature;
-  console.log(temperature);
+
   let lowNow = Math.round(response.data.main.temp_min);
   let lowNowElement = document.querySelector("#low-now");
   lowNowElement.innerHTML = lowNow;
