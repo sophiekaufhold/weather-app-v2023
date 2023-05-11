@@ -1,0 +1,80 @@
+footer {
+  font-size: 14px;
+  margin-top: 100px;
+  text-align: center;
+}
+
+.city {
+  text-transform: capitalize;
+}
+
+.container {
+  padding: 0;
+  margin: 40px 40px 20px;
+  font-family: "Poiret One", cursive;
+}
+
+.container-no-footer {
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 49px;
+  padding: 80px 20px 100px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.current-location-button {
+  text-align: center;
+  
+}
+
+.current-temperature-overview {
+  text-align: center;
+  font-size: 40px;
+}
+.date,
+.time {
+  text-align: center;
+  color: #a1a6b1;
+}
+
+.future-temperature {
+  font-size: 12px;
+  color: #a1a6b1;
+}
+
+.location {
+  text-align: center;
+  font-size: 50px;
+}
+
+.min-max-temp {
+  font-size: 14px;
+  text-align: center;
+  color: #a1a6b1;
+  margin-bottom: 30px;
+}
+
+.search-bar {
+  width: 30%;
+  display: block;
+  margin: 0 auto;
+}
+
+.units {
+  position: relative;
+  top: -16px;
+  font-size: 18px;
+}
+
+.weather-picture {
+  width: 100px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 50px;
+}
+
+.weekday {
+  font-size: 14px;
+}
