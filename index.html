@@ -17,6 +17,12 @@
       href="https://fonts.googleapis.com/css2?family=Poiret+One&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
     <title>Minimalistic Weather App</title>
     <style></style>
@@ -24,10 +30,10 @@
   <body>
     <div class="container">
       <div class="container-no-footer">
-        <section class="date">
-          <span id="day-of-week">Funday, April 13, 2023</span>
+        <section>
+          <div class="date" id="day-of-week">Funday, April 13, 2023</div>
+          <div class="time" id="time">11:17</div>
         </section>
-        <section class="time" id="time">11:17</section>
         <header class="location">
           <span class="city" id="current-city">Catania</span> |
           <span id="country">IT</span>
@@ -40,7 +46,7 @@
             style="
               --bs-btn-padding-y: 0.2rem;
               --bs-btn-padding-x: 0.5rem;
-              --bs-btn-font-size: 0.8rem;
+              --bs-btn-font-size: 13px;
             "
           >
             Current location
@@ -139,27 +145,19 @@
         </main>
       </div>
       <footer>
-        <p>
-          Coded by
-          <a href="https://www.linkedin.com/in/sophie-kaufhold/" target="_blank"
-            >Sophie Kaufhold</a
-          >
-        </p>
-
-        <p>
-          Open-sourced on
-          <a
-            href="https://github.com/sophiekaufhold/weather-app-v2023"
-            target="_blank"
-            >GitHub</a
-          >
-        </p>
-        <p>
-          Hosted on
-          <a href="https://weather-app-v2023.netlify.app/" target="_blank"
-            >Netlify</a
-          >
-        </p>
+        This project was coded by
+        <a href="https://www.linkedin.com/in/sophie-kaufhold/" target="_blank"
+          >Sophie Kaufhold</a
+        >, is open-sourced on
+        <a
+          href="https://github.com/sophiekaufhold/weather-app-v2023"
+          target="_blank"
+          >GitHub</a
+        >
+        and hosted on
+        <a href="https://weather-app-v2023.netlify.app/" target="_blank"
+          >Netlify</a
+        >.
       </footer>
     </div>
     <script src="src/app.js"></script>
