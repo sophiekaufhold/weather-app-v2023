@@ -26,7 +26,6 @@ footer {
 
 .current-location-button {
   text-align: center;
-  
 }
 
 .current-temperature-overview {
@@ -37,6 +36,10 @@ footer {
 .time {
   text-align: center;
   color: #a1a6b1;
+}
+
+.footer {
+  font-size: 11px;
 }
 
 .future-temperature {
