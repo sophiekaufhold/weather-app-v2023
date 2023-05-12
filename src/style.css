@@ -39,6 +39,14 @@ footer {
   color: #a1a6b1;
 }
 
+.description {
+  font-size: 18px;
+  text-align: center;
+  text-transform: capitalize;
+  color: #a1a6b1;
+  margin-bottom: 30px;
+}
+
 .future-temperature {
   font-size: 12px;
   color: #a1a6b1;
@@ -49,12 +57,12 @@ footer {
   font-size: 50px;
 }
 
-.min-max-temp {
+/*.min-max-temp {
   font-size: 14px;
   text-align: center;
   color: #a1a6b1;
   margin-bottom: 30px;
-}
+}*/
 
 .search-bar {
   width: 200px;
