@@ -58,8 +58,6 @@ function showDefaultCityWeather(defaultCityName) {
   axios.get(defaultUrl).then(showWeatherData);
 }
 
-showDefaultCityWeather("Catania");
-
 function changeCity(event) {
   event.preventDefault();
   // let key = "bb0df6985c2eab6a171d64a6bacbb4e1";
@@ -102,6 +100,8 @@ function showWeatherData(response) {
     `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${iconName}.png`
   );
   iconElement.setAttribute("alt", response.data.condition.icon);
+
+  celsiusTemperature = response.data.temperature.current;
 }
 
 let searchCity = document.querySelector("#search-form");
@@ -110,40 +110,21 @@ searchCity.addEventListener("submit", changeCity);
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".current-temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round((temperature * 9) / 5 + 32);
-
-  let lowTemperatureElement = document.querySelector(".low");
-  let lowTemperature = lowTemperatureElement.innerHTML;
-  lowTemperature = Number(lowTemperature);
-  lowTemperatureElement.innerHTML = Math.round((lowTemperature * 9) / 5 + 32);
-
-  let highTemperatureElement = document.querySelector(".high");
-  let highTemperature = highTemperatureElement.innerHTML;
-  highTemperature = Number(highTemperature);
-  highTemperatureElement.innerHTML = Math.round((highTemperature * 9) / 5 + 32);
+  let temperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = Math.round(temperature);
+  celsiusLink.classList.remove("active");
+  fahrenheitLink.classList.add("active");
 }
 
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector(".current-temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = Math.round(((temperature - 32) * 5) / 9);
-
-  let lowTemperatureElement = document.querySelector(".low");
-  let lowTemperature = lowTemperatureElement.innerHTML;
-  lowTemperature = Number(lowTemperature);
-  lowTemperatureElement.innerHTML = Math.round(((lowTemperature - 32) * 5) / 9);
-
-  let highTemperatureElement = document.querySelector(".high");
-  let highTemperature = highTemperatureElement.innerHTML;
-  highTemperature = Number(highTemperature);
-  highTemperatureElement.innerHTML = Math.round(
-    ((highTemperature - 32) * 5) / 9
-  );
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  fahrenheitLink.classList.remove("active");
+  celsiusLink.classList.add("active");
 }
+
+let celsiusTemperature = null;
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
@@ -172,3 +153,5 @@ function showCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", showCurrentLocation);
+
+showDefaultCityWeather("Catania");
