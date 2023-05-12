@@ -17,6 +17,7 @@ footer {
 .container-no-footer {
   border: 1px solid rgba(0, 0, 0, 0.3);
   border-radius: 49px;
+  color: #393e46;
   font-family: "Poiret One", cursive;
   padding: 80px 20px 100px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
@@ -43,12 +44,12 @@ footer {
   font-size: 18px;
   text-align: center;
   text-transform: capitalize;
-  color: #a1a6b1;
+  color: #b7b7b7;
   margin-bottom: 30px;
 }
 
 .future-temperature {
-  font-size: 12px;
+  font-size: 13px;
   color: #a1a6b1;
 }
 
@@ -69,7 +70,10 @@ footer {
   display: block;
   margin: 0 auto;
 }
-
+.time {
+  font-size: 13px;
+  color: #b7b7b7;
+}
 .units {
   position: relative;
   top: -16px;
