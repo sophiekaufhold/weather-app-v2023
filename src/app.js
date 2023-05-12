@@ -94,6 +94,14 @@ function showWeatherData(response) {
 
   let displayCountry = document.querySelector("#country");
   displayCountry.innerHTML = response.data.country;
+
+  let iconElement = document.querySelector("#weather-icon");
+  let iconName = response.data.condition.icon;
+  iconElement.setAttribute(
+    "src",
+    `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/${iconName}.png`
+  );
+  iconElement.setAttribute("alt", response.data.condition.icon);
 }
 
 let searchCity = document.querySelector("#search-form");
