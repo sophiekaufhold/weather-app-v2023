@@ -28,19 +28,17 @@ function showDate(date) {
   let dateDay = date.getDate();
 
   let currentDay = `${day}, ${month} ${dateDay}, ${year}`;
-  console.log(currentDay);
   let displayDay = document.querySelector("#day-of-week");
   displayDay.innerHTML = currentDay;
   return currentDay;
 }
 let today = new Date();
-let birthday = new Date("1990/04/29");
+//let birthday = new Date("1990/04/29");
 
 function showTime(date) {
   let hour = String(date.getHours()).padStart(2, "0");
   let minutes = String(date.getMinutes()).padStart(2, "0");
   let currentTime = `${hour}:${minutes}`;
-  console.log(currentTime);
   let displayTime = document.querySelector("#time");
   displayTime.innerHTML = currentTime;
   return currentTime;
