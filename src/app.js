@@ -48,8 +48,13 @@ function showTime(date) {
 showDate(today);
 showTime(today);
 
+let key = "4o57feb2953ca1cb4a50930ctd015ccd";
+let urlEndpoint = "https://api.shecodes.io/weather/v1/";
+let unit = "metric";
+
 function showDefaultCityWeather(defaultCityName) {
-  let defaultUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCityName}&appid=bb0df6985c2eab6a171d64a6bacbb4e1&units=metric`;
+  let defaultUrl = `${urlEndpoint}current?query=${defaultCityName}&key=${key}&units=${unit}`;
+  // let defaultUrl = `https://api.openweathermap.org/data/2.5/weather?q=${defaultCityName}&appid=bb0df6985c2eab6a171d64a6bacbb4e1&units=metric`;
   console.log(defaultUrl);
 
   axios.get(defaultUrl).then(showWeatherData);
@@ -59,34 +64,38 @@ showDefaultCityWeather("Catania");
 
 function changeCity(event) {
   event.preventDefault();
-  let key = "bb0df6985c2eab6a171d64a6bacbb4e1";
+  // let key = "bb0df6985c2eab6a171d64a6bacbb4e1";
   let city = document.querySelector("#typed-city");
   let cityName = city.value;
-  let unit = "metric";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=${unit}`;
+
+  let url = `${urlEndpoint}current?query=${cityName}&key=${key}&units=${unit}`;
+  // let url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${key}&units=${unit}`;
   city.value = "";
 
   axios.get(url).then(showWeatherData);
 }
 
 function showWeatherData(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.temperature.current);
   let newTemperature = document.querySelector("#current-temp");
   newTemperature.innerHTML = temperature;
   console.log(temperature);
-  let lowNow = Math.round(response.data.main.temp_min);
-  let lowNowElement = document.querySelector("#low-now");
-  lowNowElement.innerHTML = lowNow;
+  // let lowNow = Math.round(response.data.main.temp_min);
+  // let lowNowElement = document.querySelector("#low-now");
+  // lowNowElement.innerHTML = lowNow;
 
-  let highNow = Math.round(response.data.main.temp_max);
-  let highNowElement = document.querySelector("#high-now");
-  highNowElement.innerHTML = highNow;
+  // let highNow = Math.round(response.data.main.temp_max);
+  // let highNowElement = document.querySelector("#high-now");
+  // highNowElement.innerHTML = highNow;
+
+  let descriptionNow = document.querySelector("#description");
+  descriptionNow.innerHTML = response.data.condition.description;
 
   let displayCity = document.querySelector("#current-city");
-  displayCity.innerHTML = response.data.name;
+  displayCity.innerHTML = response.data.city;
 
   let displayCountry = document.querySelector("#country");
-  displayCountry.innerHTML = response.data.sys.country;
+  displayCountry.innerHTML = response.data.country;
 }
 
 let searchCity = document.querySelector("#search-form");
@@ -138,10 +147,14 @@ celsiusLink.addEventListener("click", convertToCelsius);
 
 function showPosition(position) {
   let lat = position.coords.latitude;
+  console.log(lat);
   let lon = position.coords.longitude;
-  let unit = "metric";
-  let key = "bb0df6985c2eab6a171d64a6bacbb4e1";
-  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=${unit}`;
+  // let unit = "metric";
+  // openWeatherKey = "bb0df6985c2eab6a171d64a6bacbb4e1";
+  let url = `${urlEndpoint}current?lat=${lat}&lon=${lon}&key=${key}&units=${unit}`;
+
+  // let url = `${urlEndpoint}current?$lon=${38}&lat=${44}&key=${key}&units=${unit}`;
+  // let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${openWeatherKey}&units=${unit}`;
   console.log(url);
   axios.get(url).then(showWeatherData);
 }
