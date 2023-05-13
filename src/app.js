@@ -35,6 +35,36 @@ function showDate(date) {
 let today = new Date();
 //let birthday = new Date("1990/04/29");
 
+function displayForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row justify-content-center">`;
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `<div class="col-md-2">
+                <div
+                  class="card text-center border-light mb-3 mx-auto"
+                  style="max-width: 18rem"
+                >
+                  <div class="card-header bg-transparent weekday">${day}</div>
+                  <div class="card-body">
+                    <p class="card-text future-temperature">
+                      <span class="forecast-high-temp">22°</span> | 12°
+                    </p>
+                    <img
+                      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                      alt="forecast icon"
+                      width="40"
+                    />
+                  </div>
+                </div>
+             `;
+    forecastHTML = forecastHTML + `</div>`;
+    forecastElement.innerHTML = forecastHTML;
+  });
+}
+
 function showTime(date) {
   let hour = String(date.getHours()).padStart(2, "0");
   let minutes = String(date.getMinutes()).padStart(2, "0");
@@ -155,3 +185,4 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", showCurrentLocation);
 
 showDefaultCityWeather("Catania");
+displayForecast();
