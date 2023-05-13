@@ -70,6 +70,10 @@ footer {
   margin-bottom: 10px;
 }
 
+.forecast-high-temp {
+  color: #0c2247;
+}
+
 .future-temperature {
   font-size: 13px;
   color: #a1a6b1;
