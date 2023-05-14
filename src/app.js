@@ -35,7 +35,8 @@ function showDate(date) {
 let today = new Date();
 //let birthday = new Date("1990/04/29");
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row justify-content-center">`;
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
@@ -101,18 +102,17 @@ function changeCity(event) {
   axios.get(url).then(showWeatherData);
 }
 
+function getForecast(lon, lat) {
+  let forecastUrl = `${urlEndpoint}forecast?lon=${lon}&lat=${lat}&key=${key}&units=${unit}`;
+  console.log(forecastUrl);
+  axios.get(forecastUrl).then(displayForecast);
+}
+
 function showWeatherData(response) {
   let temperature = Math.round(response.data.temperature.current);
   let newTemperature = document.querySelector("#current-temp");
   newTemperature.innerHTML = temperature;
   console.log(temperature);
-  // let lowNow = Math.round(response.data.main.temp_min);
-  // let lowNowElement = document.querySelector("#low-now");
-  // lowNowElement.innerHTML = lowNow;
-
-  // let highNow = Math.round(response.data.main.temp_max);
-  // let highNowElement = document.querySelector("#high-now");
-  // highNowElement.innerHTML = highNow;
 
   let descriptionNow = document.querySelector("#description");
   descriptionNow.innerHTML = response.data.condition.description;
@@ -132,6 +132,11 @@ function showWeatherData(response) {
   iconElement.setAttribute("alt", response.data.condition.icon);
 
   celsiusTemperature = response.data.temperature.current;
+
+  getForecast(
+    response.data.coordinates.longitude,
+    response.data.coordinates.latitude
+  );
 }
 
 let searchCity = document.querySelector("#search-form");
@@ -185,4 +190,3 @@ let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", showCurrentLocation);
 
 showDefaultCityWeather("Catania");
-displayForecast();
