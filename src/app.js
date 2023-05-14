@@ -35,34 +35,51 @@ function showDate(date) {
 let today = new Date();
 //let birthday = new Date("1990/04/29");
 
+function formatForecastDate(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+
+  return day;
+}
+
 function displayForecast(response) {
-  console.log(response.data.daily);
+  let forecastData = response.data.daily;
+
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row justify-content-center">`;
-  let days = ["Sun", "Mon", "Tue", "Wed", "Thu"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `<div class="col-md-2">
+
+  forecastData.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHTML =
+        forecastHTML +
+        `<div class="col-md-2">
                 <div
                   class="card text-center border-light mb-3 mx-auto"
                   style="max-width: 18rem"
                 >
-                  <div class="card-header bg-transparent weekday">${day}</div>
+                  <div class="card-header bg-transparent weekday">${formatForecastDate(
+                    day.time
+                  )}</div>
                   <div class="card-body">
                     <p class="card-text future-temperature">
-                      <span class="forecast-high-temp">22°</span> | 12°
+                      <span class="forecast-high-temp">${Math.round(
+                        day.temperature.maximum
+                      )}</span> | ${Math.round(day.temperature.minimum)}
                     </p>
                     <img
-                      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png"
+                      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${
+                        day.condition.icon
+                      }.png"
                       alt="forecast icon"
                       width="40"
                     />
                   </div>
                 </div>
              `;
-    forecastHTML = forecastHTML + `</div>`;
-    forecastElement.innerHTML = forecastHTML;
+      forecastHTML = forecastHTML + `</div>`;
+      forecastElement.innerHTML = forecastHTML;
+    }
   });
 }
 
@@ -104,7 +121,6 @@ function changeCity(event) {
 
 function getForecast(lon, lat) {
   let forecastUrl = `${urlEndpoint}forecast?lon=${lon}&lat=${lat}&key=${key}&units=${unit}`;
-  console.log(forecastUrl);
   axios.get(forecastUrl).then(displayForecast);
 }
 
