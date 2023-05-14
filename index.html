@@ -27,6 +27,7 @@
     <title>Minimalistic Weather App</title>
     <style></style>
   </head>
+
   <body>
     <div class="container">
       <div class="container-no-footer">
@@ -34,10 +35,12 @@
           <div class="date" id="day-of-week">Funday, April 13, 2023</div>
           <div class="time">Last updated: <span id="time"> 11:17</span></div>
         </section>
+
         <header class="location">
           <span class="city" id="current-city">Catania</span> |
           <span id="country">Italy</span>
         </header>
+
         <div class="current-location-button" id="current-location-button">
           <button
             type="submit"
@@ -52,7 +55,9 @@
             Current location
           </button>
         </div>
+
         <br />
+
         <main>
           <section class="search-bar">
             <form id="search-form">
@@ -78,18 +83,12 @@
 
           <section class="current-temperature-overview">
             <span class="current-temperature" id="current-temp">22</span>
-            <span class="units"
-              ><a href="#" class="celsius active" id="celsius-link">°C</a> |
-              <a href="#" class="fahrenheit" id="fahrenheit-link">°F</a></span
-            >
+            <span class="unit">°C</span>
           </section>
+
           <section>
             <div class="description" id="description">Sunny</div>
           </section>
-          <!--<section class="min-max-temp">
-            <span class="low" id="low-now">12</span> |
-            <span class="high" id="high-now">24</span>
-          </section>-->
 
           <figure>
             <img
@@ -99,9 +98,11 @@
               id="weather-icon"
             />
           </figure>
+
           <div class="forecast" id="forecast"></div>
         </main>
       </div>
+
       <footer>
         This project was coded by
         <a href="https://www.linkedin.com/in/sophie-kaufhold/" target="_blank"
